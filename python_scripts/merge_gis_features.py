@@ -54,14 +54,14 @@ def utc_now() -> datetime.datetime:
     return datetime.datetime.now(datetime.UTC)
 
 
-def first_non_null(series: gpd.Series) -> Union[Any, None]:
+def first_non_null(series: gpd.GeoSeries) -> Union[Any, None]:
     """Find the first non-null value in a series.
 
     Mostly used for filling in columns with some closely related
     data when merging parcel features.
 
     Args:
-        series (gpd.Series): The series to parse through.
+        series (gpd.GeoSeries): The series to parse through.
 
     Returns:
         Union[Any, None]: The matching value (or None).
@@ -74,14 +74,14 @@ def first_non_null(series: gpd.Series) -> Union[Any, None]:
     return value
 
 
-def combine_attrs_to_csv(series: gpd.Series) -> str:
+def combine_attrs_to_csv(series: gpd.GeoSeries) -> str:
     """Combined multiple rows of an attribute into one comma-separated string.
 
     Mainly used to track all the original Parcel IDs
     when merging parcel features into one.
 
     Args:
-        series (gpd.Series): The attribute column (field) to merge.
+        series (gpd.GeoSeries): The attribute column (field) to merge.
 
     Returns:
         str: Merged CSV output.
