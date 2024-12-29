@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>pydeck</title>
+        <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v1.13.0/mapbox-gl.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <script src='https://cdn.jsdelivr.net/npm/@deck.gl/jupyter-widget@~9.0.*/dist/index.js'></script>
+    <style>
+    body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#deck-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+#deck-container canvas {
+  z-index: 1;
+  background: none;
+}
+    </style>
+  </head>
+  <body>
+    <div id="deck-container">
+    </div>
+  </body>
+  <script>
+    const container = document.getElementById('deck-container');
+    const jsonInput = {
+  "initialViewState": {
+    "bearing": 0,
+    "latitude": 33.952,
+    "longitude": -84.549,
+    "maxZoom": 16,
+    "pitch": 45,
+    "zoom": 11
+  },
+  "layers": [
+    {
+      "@@type": "PolygonLayer",
+      "data": [
+        [
+          [
+            -84.641,
+            34.004
+          ],
+          [
+            -84.641,
+            33.879
+          ],
+          [
+            -84.442,
+            33.879
+          ],
+          [
+            -84.442,
+            34.004
+          ]
+        ]
+      ],
+      "getFillColor": [
+        0,
+        0,
+        0,
+        20
+      ],
+      "getPolygon": "@@=-",
+      "id": "b1d24e6a-1eb7-4209-8894-143757175f94",
+      "stroked": false
+    },
+    {
+      "@@type": "GeoJsonLayer",
+      "data": "marietta_revenue_acre.geojson",
+      "extruded": true,
+      "filled": true,
+      "getElevation": "@@=properties.revenue_acre / 20",
+      "getFillColor": "@@=[properties.red, properties.g, properties.b, 255]",
+      "getLineColor": "@@=[properties.red, properties.g, properties.b, 255]",
+      "id": "838d0b09-49e8-491b-9af7-5f3f80ee41ec",
+      "opacity": 0.8,
+      "pickable": true,
+      "stroked": false,
+      "wireframe": true
+    }
+  ],
+  "mapProvider": "carto",
+  "mapStyle": "https://basemaps.cartocdn.com/gl/voyager-gl-style/style.json",
+  "views": [
+    {
+      "@@type": "MapView",
+      "controller": true
+    }
+  ]
+};
+    const tooltip = {'html': '<b>Address:</b> {properties.SITUS_ADDR}<br/><b>Revenue Per Acre:</b> ${properties.revenue_acre}<br/><b>Assessed Value Per Acre:</b> ${properties.value_acre}', 'style': {'color': 'white'}};
+    const customLibraries = null;
+    const configuration = null;
+
+    const deckInstance = createDeck({
+                  container,
+      jsonInput,
+      tooltip,
+      customLibraries,
+      configuration
+    });
+
+  </script>
+</html>
