@@ -91,18 +91,6 @@
         function pop_CountyPopulationWeightedDensityPerSqMile_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(String(feature.properties['fid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['STATE'] !== null ? autolinker.link(String(feature.properties['STATE']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['COUNTY'] !== null ? autolinker.link(String(feature.properties['COUNTY']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['GEO_ID'] !== null ? autolinker.link(String(feature.properties['GEO_ID']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
                         <th scope="row">NAME</th>\
                         <td>' + (feature.properties['NAME'] !== null ? autolinker.link(String(feature.properties['NAME']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
@@ -117,9 +105,6 @@
                     <tr>\
                         <th scope="row">density</th>\
                         <td>' + (feature.properties['density'] !== null ? autolinker.link(String(feature.properties['density']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['weight'] !== null ? autolinker.link(String(feature.properties['weight']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <th scope="row">pop_weight_density</th>\
